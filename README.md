@@ -1,73 +1,129 @@
-# Codegeist-2025
-A Fully Autonomous AI Project Manager for Jira, Bitbucket &amp; Confluence (Forge + Rovo)
-The Rovo Autonomous Team Orchestrator is a next-generation AI agent for Atlassian Cloud that manages software teams automatically.
-It observes activity across Jira, Bitbucket, and Confluence, and takes real, autonomous actions, not just suggestions.
+# Why — Decision Memory for Atlassian
 
-Using Atlassian Forge, Rovo Agents, and intelligent workflows, the Orchestrator ensures your teams stay aligned, issues stay clean, sprints stay predictable, and documentation stays updated all without human intervention.
+> **Codegeist 2025: Atlassian Williams Racing Edition**  
+> Category: Apps for Software Teams
 
-✨ Key Features
-🤖 Autonomous Jira Ticket Improvements
+## The Problem
 
-Rewrite unclear issues into full, structured, high-quality tickets
+Every team makes hundreds of decisions—in Jira comments, PR reviews, Confluence discussions, Slack threads. Six months later, someone asks:
 
-Add acceptance criteria, steps to reproduce, and expected outcomes
+*"Why did we choose Postgres over MongoDB?"*  
+*"Who decided to deprecate the v1 API?"*  
+*"What was the reasoning behind this architecture?"*
 
-Automatically detect missing fields or vague descriptions
+Nobody knows. The context is gone. The same debates happen again. New team members are lost.
 
-Leave transparent audit comments on every change
+**Decisions are made everywhere. They're remembered nowhere.**
 
-👤 Intelligent Auto-Assignment
+## The Solution
 
-Calculates team workload in real time
+**Why** is a Rovo agent that captures decision context automatically and makes it searchable forever.
 
-Assigns issues to the most available and relevant contributor
+### How It Works
 
-Explains each decision in a human-readable comment
+1. **Detects decisions** — Watches Jira issues, Confluence pages, and Bitbucket PRs for decision signals ("we decided", "let's go with", "the conclusion is", etc.)
 
-🪄 Automatic Subtask Generation
+2. **Prompts for context** — When a decision is detected, asks: "Looks like a decision was made. Want to capture why?"
 
-For Bugs, Stories, or any configured issue type, the Orchestrator can automatically create subtasks such as:
+3. **Stores decision memory** — Saves the decision, reasoning, who made it, when, and links to related issues/docs/code
 
-Reproduce
+4. **Answers questions** — Ask the agent anything:
+   - "Why did we choose this database?"
+   - "What decisions have we made about authentication?"
+   - "Show me all architecture decisions from Q3"
 
-Fix
+## Features
 
-Test & Validate
+ **Decision Detection** — AI-powered recognition of decision language in comments and discussions
+ **Conversational Capture** — Natural chat interface to add context and reasoning
+ **Cross-Product Links** — Connects decisions to Jira issues, Confluence pages, Bitbucket PRs
+ **Searchable Memory** — Query past decisions in natural language
+ **Decision Timeline** — Visual history of what was decided and when 
+ **Team Awareness** — See who made decisions and who was involved
 
-Documentation
+## Tech Stack
 
-📊 Sprint Awareness & Predictions
+- **Atlassian Forge** — Serverless app platform
+- **Rovo Agent** — Conversational AI interface
+- **Forge Storage** — Persistent decision database
+- **Jira/Confluence/Bitbucket APIs** — Cross-product integration
 
-Predicts sprint slippage based on velocity + remaining workload
+## Installation
 
-Creates stabilization plans and assigns follow-up tasks
+### Prerequisites
 
-Generates structured standups and retrospectives in Confluence
+- Node.js 18+
+- Atlassian Cloud developer account
+- Forge CLI
 
-🔁 Bitbucket-Driven Release Notes
+### Setup
 
-When PRs merge, the Orchestrator automatically:
+```bash
+# Install Forge CLI
+npm install -g @forge/cli
 
-Summarizes merged changes
+# Login to Atlassian
+forge login
 
-Identifies linked Jira issues
+# Install dependencies
+npm install
 
-Generates Release Notes pages in Confluence
+# Deploy to development
+forge deploy
 
-📝 Audit Logging & Rollback
+# Install on your Atlassian site
+forge install
+```
 
-Every autonomous action is logged
+### Configuration
 
-Admin UI includes rollback for each action
+1. Install the app on your Atlassian site
+2. Navigate to Rovo Chat
+3. Find "Why" in the agent directory
+4. Start capturing decisions
 
-Easy debugging and transparent review
+## Usage
 
-⚙️ Admin Dashboard
+### Capturing a Decision
 
-Enable/disable agent per project
+When Why detects a decision in your workflow:
 
-Configure confidence thresholds for autonomous decisions
+```
+Why: I noticed you wrote "Let's go with Redis for caching" in PROJ-123.
+     Want to capture why this decision was made?
 
-View audit logs
+You: Yes, we chose Redis because we need sub-millisecond latency 
+     and our team already has Redis expertise.
 
-Toggle action categories (rewrite, assign, subtasks, release notes, etc.)
+Why: Got it. I've saved this decision and linked it to PROJ-123.
+     Anything else to add about alternatives considered?
+
+You: We also looked at Memcached but Redis has better data structures.
+
+Why: Decision captured with full context. ✓
+```
+
+### Querying Past Decisions
+
+```
+You: Why did we choose Redis?
+
+Why: On March 15, 2025, the team decided to use Redis for caching.
+
+     Reasoning: Sub-millisecond latency requirements, existing team expertise.
+     
+     Alternatives considered: Memcached (rejected due to limited data structures)
+     
+     Decision made by: @sarah in PROJ-123
+     Related: [PROJ-123] [Architecture Doc] [PR #456]
+```
+
+
+
+
+
+Built for Codegeist 2025 by Amulya K H
+
+
+
+MIT
