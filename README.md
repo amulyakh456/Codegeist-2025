@@ -1,4 +1,4 @@
-# Why — Decision Memory for Atlassian
+# Why - Decision Memory for Atlassian
 
 > **Codegeist 2025: Atlassian Williams Racing Edition**  
 > Category: Apps for Software Teams
